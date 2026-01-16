@@ -19,7 +19,7 @@ public class Instructor {
     private String name;
     private String email;
 
-    @OneToMany(mappedBy = "instructor", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "instructor", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Course> courses;
 
     public void addCourses(Course course) {

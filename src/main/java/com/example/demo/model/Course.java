@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -41,8 +42,14 @@ public class Course {
     }
 
     public void addStudent(Student student) {
-        if (students == null) students = new ArrayList<>();
+        // 1. Update this side
+        if (students == null) students = new HashSet<>();
         students.add(student);
-        student.setCourses((List<Course>) this);
+
+        // 2. Update the other side (The Owner) safely
+        if (student.getCourses() == null) {
+            student.setCourses(new HashSet<>());
+        }
+        student.getCourses().add(this);
     }
 }
