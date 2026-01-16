@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Setter
@@ -27,8 +28,20 @@ public class Course {
     private Instructor instructor;
 
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Lesson> lesson;
+    private List<Lesson> lessons;
 
     @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
     private List<Student> students;
+
+    public void addLesson(Lesson lesson) {
+        if (lessons == null) lessons = new ArrayList<>();
+        lessons.add(lesson);
+        lesson.setCourse(this);
+    }
+
+    public void addStudent(Student student) {
+        if (students == null) students = new ArrayList<>();
+        students.add(student);
+        student.setCourses((List<Course>) this);
+    }
 }
