@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -24,5 +25,5 @@ public class Student {
             joinColumns = @JoinColumn(name = "studentId"),
             inverseJoinColumns = @JoinColumn(name = "courseId")
     )
-    private List<Course> courses;
+    private Set<Course> courses;
 }

@@ -8,6 +8,7 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Setter
 @Getter
@@ -31,7 +32,7 @@ public class Course {
     private List<Lesson> lessons;
 
     @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
-    private List<Student> students;
+    private Set<Student> students;
 
     public void addLesson(Lesson lesson) {
         if (lessons == null) lessons = new ArrayList<>();
