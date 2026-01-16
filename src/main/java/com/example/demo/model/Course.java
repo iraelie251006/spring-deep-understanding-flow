@@ -30,26 +30,48 @@ public class Course {
     private Instructor instructor;
 
     @OneToMany(mappedBy = "course", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Lesson> lessons;
+    private List<Lesson> lessons = new ArrayList<>();
 
     @ManyToMany(mappedBy = "courses", fetch = FetchType.LAZY)
-    private Set<Student> students;
+    private Set<Student> students = new HashSet<>();
 
     public void addLesson(Lesson lesson) {
-        if (lessons == null) lessons = new ArrayList<>();
-        lessons.add(lesson);
+//        Pro edition(Principal engineer approach) 👌
+
+        this.lessons.add(lesson);
         lesson.setCourse(this);
+//        second implementation after understanding it
+//        this was what was happening under the hood.
+//        if (lessons == null) {
+//            lessons = new ArrayList<>();
+//        }
+//
+//        lessons.add(lesson);
+//
+//        if (lesson.getCourse() == null) {
+//            lesson.setCourse(this);
+//        }
+
+
+//        first implementation before understanding
+//        if (lessons == null) lessons = new ArrayList<>();
+//        lessons.add(lesson);
+//        lesson.setCourse(this);
     }
 
     public void addStudent(Student student) {
+
+        this.students.add(student);
+        student.getCourses().add(this);
+
         // 1. Update this side
-        if (students == null) students = new HashSet<>();
-        students.add(student);
+//        if (students == null) students = new HashSet<>();
+//        students.add(student);
 
         // 2. Update the other side (The Owner) safely
-        if (student.getCourses() == null) {
-            student.setCourses(new HashSet<>());
-        }
-        student.getCourses().add(this);
+//        if (student.getCourses() == null) {
+//            student.setCourses(new HashSet<>());
+//        }
+//        student.getCourses().add(this);
     }
 }

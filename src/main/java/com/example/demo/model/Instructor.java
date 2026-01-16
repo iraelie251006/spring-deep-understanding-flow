@@ -20,11 +20,10 @@ public class Instructor {
     private String email;
 
     @OneToMany(mappedBy = "instructor", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<Course> courses;
+    private List<Course> courses = new ArrayList<>();
 
     public void addCourses(Course course) {
-        if (courses == null) courses = new ArrayList<>();
-        courses.add(course);
+        this.courses.add(course);
         course.setInstructor(this);
     }
 }
