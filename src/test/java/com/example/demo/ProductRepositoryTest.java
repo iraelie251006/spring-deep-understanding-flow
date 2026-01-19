@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.qahandler.Product;
 import com.example.demo.qahandler.ProductRepository;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.data.jpa.test.autoconfigure.DataJpaTest;
@@ -13,13 +14,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @DataJpaTest
+@RequiredArgsConstructor
 class ProductRepositoryTest {
 
-    @Autowired
-    private TestEntityManager entityManager;
+    private final TestEntityManager entityManager;
 
-    @Autowired
-    private ProductRepository repository;
+    private final ProductRepository repository;
 
     @Test
     void findByNameContaining_ShouldReturnMatchingProducts() {

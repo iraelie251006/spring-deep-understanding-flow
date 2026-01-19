@@ -2,6 +2,7 @@ package com.example.demo;
 
 import com.example.demo.qahandler.Product;
 import com.example.demo.qahandler.ProductRepository;
+import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,13 +15,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@RequiredArgsConstructor
 class ProductIntegrationTest {
 
-    @Autowired
-    private TestRestTemplate restTemplate;
+    private final TestRestTemplate restTemplate;
 
-    @Autowired
-    private ProductRepository repository;
+    private final ProductRepository repository;
 
     @BeforeEach
     void setUp() {
