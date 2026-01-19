@@ -48,7 +48,7 @@ public class CourseService {
         instructor.addCourses(course);
 
         // 6. Save
-        // Because of CascadeType.ALL on Instructor, simply saving the instructor
+        // Because of CascadeType.ALL on Instructor, simply saving the instructor 
         // will cascade down and save the Course AND the Lessons.
         instructorRepository.save(instructor);
     }
