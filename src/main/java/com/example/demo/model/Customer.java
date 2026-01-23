@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Builder
 @Getter @Setter @NoArgsConstructor
 public class Customer {
     @Id
@@ -16,6 +18,16 @@ public class Customer {
     private Long id;
     private String name;
     private String email;
+
+    public Customer(Long id, String name, String email, String address, List<Order> orders, List<Invoice> invoices) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.address = address;
+        this.orders = orders;
+        this.invoices = invoices;
+    }
+
     private String address;
 
     // One Customer has Many Orders
