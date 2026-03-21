@@ -40,6 +40,7 @@ public class Customer {
     private List<Invoice> invoices;
 
     // Helper method for Bidirectional Sync
+    //    used to keep objects in sync
     public void addOrder(Order order) {
         if (orders == null) orders = new ArrayList<>();
         orders.add(order);
