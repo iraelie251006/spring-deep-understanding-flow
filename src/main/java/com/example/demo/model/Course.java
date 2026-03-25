@@ -22,7 +22,7 @@ public class Course {
     private String title;
     private BigDecimal price;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "instructorId")
 //    I have learnt the owning side is always the one that has ManyToOne
 //    because It will be impossible to put all courseIDs on row of an instructor
