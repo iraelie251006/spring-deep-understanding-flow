@@ -53,7 +53,6 @@ public class Course {
 //        }
 
 
-
 //        first implementation before understanding
 //        if (lessons == null) lessons = new ArrayList<>();
 //        lessons.add(lesson);
