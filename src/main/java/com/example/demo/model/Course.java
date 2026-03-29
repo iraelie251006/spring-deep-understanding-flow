@@ -79,4 +79,5 @@ public class Course {
 //    it also stores the reference only
 
 //    Then about Heap
+//    This is where all objects and class instances are stored
 }
