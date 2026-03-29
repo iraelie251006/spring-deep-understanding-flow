@@ -77,4 +77,6 @@ public class Course {
 //    Today i learnt about difference between Heap and Stack
 //    about Stack is that each thread has its own stack
 //    it also stores the reference only
+
+//    Then about Heap
 }
