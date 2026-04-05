@@ -62,7 +62,7 @@ public final class HttpRequest {
         private Map<String, String> headers = new HashMap<>();
         private String body = null;
 
-        public Builder(MethodEnum method, String url) {
+        public Builder(String url, MethodEnum method) {
             if (url == null || url.isBlank()) {
                 throw new IllegalArgumentException("url is required");
             }
@@ -72,7 +72,7 @@ public final class HttpRequest {
 
         public Builder connectTimeoutMs(int connectTimeoutMs) {
             if (connectTimeoutMs <= 0) {
-                throw new IllegalArgumentException("connectTimeoutMs must be > 0")
+                throw new IllegalArgumentException("connectTimeoutMs must be > 0");
             }
             this.connectTimeoutMs = connectTimeoutMs;
             return this;
@@ -80,7 +80,7 @@ public final class HttpRequest {
 
         public Builder readTimeoutMs(int readTimeoutMs) {
             if (readTimeoutMs <= 0) {
-                throw new IllegalArgumentException("readTimeoutMs must be > 0")
+                throw new IllegalArgumentException("readTimeoutMs must be > 0");
             }
             this.readTimeoutMs = readTimeoutMs;
             return this;
