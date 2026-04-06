@@ -1,7 +1,16 @@
 package com.example.demo.patterns;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public final class ConnectionPool {
-    private ConnectionPool() {}
+    private final List<String> connections;
+    private int currentIndex = 0;
+
+    private ConnectionPool() {
+        connections = Collections.unmodifiableList(loadConnections());
+    }
 
     private static final class Holder {
         private static final ConnectionPool INSTANCE = new ConnectionPool();
@@ -9,5 +18,25 @@ public final class ConnectionPool {
 
     public static ConnectionPool getInstance() {
         return Holder.INSTANCE;
+    }
+
+    public String getConnection() {
+        String conn = connections.get(currentIndex);
+        currentIndex = (currentIndex + 1) % connections.size();
+        return conn;
+    }
+
+    public void releaseConnection(String connection) {
+        System.out.println("Release: " + connection);
+    }
+
+    private List<String> loadConnections() {
+        List<String> conns = new ArrayList<>();
+
+        for (int i = 1; i <= 10; i++) {
+            conns.add("jdbc:postgresql://db.prod.com:5432/db_" + i);
+        }
+
+        return conns;
     }
 }
