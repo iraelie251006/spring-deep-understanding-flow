@@ -12,3 +12,5 @@ RUN ./mvnw package -DskipTests -q
 RUN java -Djarmode=layertools -jar target/order-service.jar extract
 
 # stage 2: Runtime
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
