@@ -1,3 +1,4 @@
+# Stage 1: Build
 FROM eclipse-temurin:21-jdk-alpine AS builder
 WORKDIR /app
 
@@ -6,6 +7,8 @@ COPY mvnw pom.xml ./
 RUN ./mvnw dependency:go-offline -q
 
 COPY src ./src
-RUN .mvnw package -DskipTests -q
+RUN ./mvnw package -DskipTests -q
 
 RUN java -Djarmode=layertools -jar target/order-service.jar extract
+
+# stage 2: Runtime
