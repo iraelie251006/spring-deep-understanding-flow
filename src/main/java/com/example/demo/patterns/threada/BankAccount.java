@@ -11,5 +11,7 @@ class BankAccount {
             balance -= amt; to.deposit(amt);
         } // releases lock on exit
     }
+    public void deposit(double amt) {
+    }
 }
 
