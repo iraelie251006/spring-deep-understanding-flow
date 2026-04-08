@@ -12,6 +12,10 @@ class BankAccount {
         } // releases lock on exit
     }
     public void deposit(double amt) {
+        synchronized(lock) { // acquire monitor
+            balance += amt;
+            lock.notifyAll(); // wake up waiters
+        } // releases lock on exit
     }
 }
 
