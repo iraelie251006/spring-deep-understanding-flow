@@ -4,6 +4,12 @@ class BankAccount {
     private double balance;
     private final Object lock = new Object();
     public void transfer(BankAccount to, double amt) throws InterruptedException {
+        synchronized(lock) { // acquire monitor
+            while (balance < amt) {
+                lock.wait(); // RELEASES lock, parks here
+            }
+            balance -= amt; to.deposit(amt);
+        } // releases lock on exit
     }
 }
 
