@@ -3,17 +3,17 @@ package com.example.demo.patterns.threada;
 class BankAccount {
     private double balance;
     private final Object lock = new Object();
-    public void transfer(BankAccount to, double amt) throws InterruptedException {
+    public void transfer(BankAccount to, double amount) throws InterruptedException {
         synchronized(lock) { // acquire monitor
-            while (balance < amt) {
+            while (balance < amount) {
                 lock.wait(); // RELEASES lock, parks here
             }
-            balance -= amt; to.deposit(amt);
+            balance -= amount; to.deposit(amount);
         } // releases lock on exit
     }
-    public void deposit(double amt) {
+    public void deposit(double amount) {
         synchronized(lock) { // acquire monitor
-            balance += amt;
+            balance += amount;
             lock.notifyAll(); // wake up waiters
         } // releases lock on exit
     }
