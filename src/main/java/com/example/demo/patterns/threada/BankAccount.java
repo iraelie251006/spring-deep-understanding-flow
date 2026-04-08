@@ -1,4 +1,6 @@
 package com.example.demo.patterns.threada;
 
-public class BankAccount {
+class BankAccount {
+    private double balance;
+    private final Object lock = new Object();
 }
