@@ -15,7 +15,7 @@ class BankAccount {
         synchronized(lock) { // acquire monitor
             balance += amount;
             lock.notifyAll(); // wake up waiters
-        } // releases lock on exit
+        }
     }
 }
 
