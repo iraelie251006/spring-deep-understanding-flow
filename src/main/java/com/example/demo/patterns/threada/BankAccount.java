@@ -14,7 +14,7 @@ class BankAccount {
     public void deposit(double amount) {
         synchronized(lock) { // acquire monitor
             balance += amount;
-            lock.notifyAll(); // wake up waiters
+            lock.notifyAll();
         }
     }
 }
