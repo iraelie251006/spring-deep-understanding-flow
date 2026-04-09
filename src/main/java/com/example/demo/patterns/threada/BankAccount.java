@@ -6,7 +6,7 @@ class BankAccount {
     public void transfer(BankAccount to, double amount) throws InterruptedException {
         synchronized(lock) { // acquire monitor
             while (balance < amount) {
-                lock.wait(); // RELEASES lock, parks here
+                lock.wait();
             }
             balance -= amount; to.deposit(amount);
         }
