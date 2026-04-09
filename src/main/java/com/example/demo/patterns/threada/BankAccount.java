@@ -4,7 +4,7 @@ class BankAccount {
     private double balance;
     private final Object lock = new Object();
     public void transfer(BankAccount to, double amount) throws InterruptedException {
-        synchronized(lock) { // acquire monitor
+        synchronized(lock) {
             while (balance < amount) {
                 lock.wait();
             }
