@@ -12,7 +12,7 @@ class BankAccount {
         } // releases lock on exit
     }
     public void deposit(double amount) {
-        synchronized(lock) { // acquire monitor
+        synchronized(lock) {
             balance += amount;
             lock.notifyAll();
         }
