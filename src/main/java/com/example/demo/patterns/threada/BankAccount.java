@@ -9,7 +9,7 @@ class BankAccount {
                 lock.wait(); // RELEASES lock, parks here
             }
             balance -= amount; to.deposit(amount);
-        } // releases lock on exit
+        }
     }
     public void deposit(double amount) {
         synchronized(lock) {
