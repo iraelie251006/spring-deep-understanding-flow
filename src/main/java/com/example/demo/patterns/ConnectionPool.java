@@ -24,6 +24,7 @@ public final class ConnectionPool {
     }
 
     public String getConnection() {
+//        round_robin getting connection string sequentially
         String conn = connections.get(currentIndex);
         currentIndex = (currentIndex + 1) % connections.size();
         return conn;
