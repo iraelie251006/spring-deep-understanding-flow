@@ -19,6 +19,7 @@ public final class ConnectionPool {
     }
 
     public static ConnectionPool getInstance() {
+//        instance created only when getInstance is called
         return Holder.INSTANCE;
     }
 
