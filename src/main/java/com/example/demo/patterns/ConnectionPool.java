@@ -13,7 +13,7 @@ public final class ConnectionPool {
 //        passed unmodifiableList wrapper for immutability
         connections = Collections.unmodifiableList(loadConnections());
     }
-
+//  static inner final class Holder
     private static final class Holder {
         private static final ConnectionPool INSTANCE = new ConnectionPool();
     }
