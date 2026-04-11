@@ -10,6 +10,7 @@ public final class ConnectionPool {
     private int currentIndex = 0;
 
     private ConnectionPool() {
+//        passed unmodifiableList wrapper for immutability
         connections = Collections.unmodifiableList(loadConnections());
     }
 
