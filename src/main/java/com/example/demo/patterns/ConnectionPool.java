@@ -31,6 +31,7 @@ public final class ConnectionPool {
     }
 
     public void releaseConnection(String connection) {
+//        simulated release of connection
         System.out.println("Release: " + connection);
     }
 
