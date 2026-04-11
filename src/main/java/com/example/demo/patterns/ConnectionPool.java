@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+// made class final to make it immutable
 public final class ConnectionPool {
     private final List<String> connections;
     private int currentIndex = 0;
