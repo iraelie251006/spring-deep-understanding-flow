@@ -36,6 +36,7 @@ public final class ConnectionPool {
     }
 
     private List<String> loadConnections() {
+//        create dummy connection list of string
         List<String> conns = new ArrayList<>();
 
         for (int i = 1; i <= 10; i++) {
